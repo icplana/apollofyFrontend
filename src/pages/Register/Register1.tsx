@@ -4,57 +4,62 @@ import { useFetchDBJSON } from "../../hooks/useFetch";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../types/types";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Register1 = () => {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    gender: "woman",
-  });
 
-  const navigate = useNavigate();
+  const {user} = useAuth0()
 
-  const { user }: { user: User[] } = useFetchDBJSON();
+  console.log(user)
+  // const [form, setForm] = useState({
+  //   email: "",
+  //   password: "",
+  //   gender: "woman",
+  // });
 
-  const onChange = (e: Event) => {
-    setForm({
-      ...form,
-      [e.target?.name]: e.target?.value,
-    });
-  };
+  // const navigate = useNavigate();
 
-  const onSubmit = (e: Event) => {
-    e.preventDefault();
-    let validation = true;
-    if (!form.email.split("").includes("@")) {
-      alert("email invalido");
-      validation = false;
-    }
-    if (form.password.length < 6) {
-      alert("password must be at least 6 characters");
-      validation = false;
-    }
+  // const { user }: { user: User[] } = useFetchDBJSON();
 
-    user.map((eachUser) => {
-      if (eachUser.email === form.email) {
-        alert("email already in use");
-        validation = false;
-      }
-    });
+  // const onChange = (e: Event) => {
+  //   setForm({
+  //     ...form,
+  //     [e.target?.name]: e.target?.value,
+  //   });
+  // };
 
-    if (validation) navigate("/register2");
-  };
+  // const onSubmit = (e: Event) => {
+  //   e.preventDefault();
+  //   let validation = true;
+  //   if (!form.email.split("").includes("@")) {
+  //     alert("email invalido");
+  //     validation = false;
+  //   }
+  //   if (form.password.length < 6) {
+  //     alert("password must be at least 6 characters");
+  //     validation = false;
+  //   }
+
+  //   user.map((eachUser) => {
+  //     if (eachUser.email === form.email) {
+  //       alert("email already in use");
+  //       validation = false;
+  //     }
+  //   });
+
+  //   if (validation) navigate("/register2");
+  // };
 
   return (
     <>
-      <Link to="/register2" className="link">
+      {/* <Link to="/register2" className="link">
         <CreateAccountHeader />
-      </Link>
-      <form onSubmit={onSubmit} className="register_form" action="">
+      </Link> */}
+      {/* <form onSubmit={onSubmit} className="register_form" action="">
         <label className="register_labelForm" htmlFor="">
-          {" "}
+          {" "} */}
           {/* What's your Email? */}
-        </label>
+        {/* </label>
         <input
           className="register_inputForm"
           type="email"
@@ -62,60 +67,61 @@ export const Register1 = () => {
           placeholder="What's your Email"
           value={form.email}
           onChange={onChange}
-        />
+        /> */}
 
         {/* <label className="register_labelForm" htmlFor="">
           Create a password
         </label> */}
-        <input
+        {/* <input
           className="register_inputForm"
           type="password"
           name="password"
           value={form.password}
           placeholder="Create a password"
           onChange={onChange}
-        />
+        /> */}
 
         {/* <label className="register_labelForm" htmlFor="">
           Name
         </label> */}
-        <input
+        {/* <input
           className="register_inputForm"
           type="password"
           name="password"
           value={form.password}
           placeholder="Name"
           onChange={onChange}
-        />
+        /> */}
 
         {/* <label className="register_labelForm" htmlFor="">
           Last name
         </label> */}
-        <input
+        {/* <input
           className="register_inputForm"
           type="password"
           name="password"
           placeholder="Last name"
           value={form.password}
           onChange={onChange}
-        />
+        /> */}
 
         {/* <label className="register_labelForm" htmlFor="">
           User name
         </label> */}
-        <input
+        {/* <input
           className="register_inputForm"
           type="password"
           name="password"
           placeholder="User name"
           value={form.password}
           onChange={onChange}
-        />
+        /> */}
 
-        <Link to="/register2" className="link">
+        {/* <Link to="/register2" className="link">
           <input type="submit" value="Next" className="register_nextBtn" />
         </Link>
-      </form>
+      </form> */}
+      <button onClick={() => console.log(user)}>wefew</button>
     </>
   );
 };

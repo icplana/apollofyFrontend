@@ -1,5 +1,5 @@
 import "./welcome.css";
-import gato from "../../assets/images/alex-d-J93PXpBPCFI-unsplash_pa9ypj.webp";
+// import gato from "../../assets/images/alex-d-J93PXpBPCFI-unsplash_pa9ypj.webp";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../context/usercontext";
 
@@ -9,7 +9,7 @@ const Welcome = () => {
 
   return (   
     <div className="userWelcome">
-      <Link to="/profile"><img src={user.profilePicture} alt="gato userName" /></Link>
+      <Link to="/profile"><img src={user.picture} alt="gato userName" /></Link>
       <h2>Hi {user.username}</h2>
     </div>   
   );

@@ -10,7 +10,7 @@ const UserMusic = () => {
 
   const getMusic = async () => {
     try {
-      const request = await fetch("http://localhost:3000/tracks");
+      const request = await fetch("http://localhost:4040/");
       const JSONrequest = await request.json();
       return JSONrequest;
     } catch (error) {
