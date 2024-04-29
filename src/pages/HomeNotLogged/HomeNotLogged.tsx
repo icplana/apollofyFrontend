@@ -1,38 +1,46 @@
-import { useAuth0 } from "@auth0/auth0-react"
-import { useUserContext } from "../../context/usercontext"
-import { useAuthDispatch } from "../../context/authcontext"
-import { useNavigate } from "react-router-dom"
+
+import { useNavigate } from 'react-router-dom';
 import { LoginButtonAuth } from '../../components/LoginButtonAuth/LoginButtonAuth';
-import { useEffect } from "react";
+import { useAuthDispatch } from '../../context/authcontext';
+import { useUserContext } from '../../context/usercontext';
 
 
 
 export const HomeNotLogged = () => {
   const dispatch = useAuthDispatch()
   const userContext = useUserContext()
-  const navigate = useNavigate();  
-  const { isLoading, user } = useAuth0()
+  const navigate = useNavigate(); 
   
   
-
   const customLogin = async () => {
-    console.log(user)
-    userContext.setUser(user)
-    dispatch({type: "LOGIN"})
-    navigate("/home");
+   
+  const user = {
+    username: 'icplana',
+    picture: 'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png',
+    role: 'superAdmin', //not sure if that's a proper way of adding the type
+    name: 'ignasi',
+    firstSurname: 'casanovas',
+    secondSurname: 'plana',
+    email: 'ignasicp96@gmail.com',
+    password: 'password',
+    following: [],
+    followers: [],
+    autors: [],
+    albums: [],
+    playlists: [],
   }
+  // console.log(user)
+  userContext.setUser(user)
+  dispatch({type: "LOGIN"})
+  navigate("/home");
+}
 
-
-  useEffect(() => {
-    customLogin()
-  }, [isLoading])
-  
   
   
 
   return (
     <div className="homeNotLogged_container">
-      <img className="homeNotLogged_musicAnswerImg" src="../src/assets/images/HomeNotLogged/musicAnswer.webp" alt="music is the answer" />
+      <img className="homeNotLogged_musicAnswerImg" src="../src/assets/images/HomeNotLogged/musicAnswer.webp" alt="music is the answer" onClick={ customLogin }/>
       <img className="homeNotLogged_musicAnswerLogo" src="../src/assets/images/HomeNotLogged/logo.webp" alt="" />
       <p className="homeNotLogged_text">Sing. Dance. Feel Free. Only on Apollofy.</p>
     

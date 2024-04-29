@@ -1,4 +1,4 @@
-import { User } from "../interfaces/user";
+import { Roles, User } from "../interfaces/user";
 import { createContext, useContext, ReactNode, useState } from "react";
 
 interface UserContextType {
@@ -13,8 +13,25 @@ interface UserProps {
 const UserContext = createContext({} as UserContextType);
 
 export function UserContextProvider(Props: UserProps) {
-  const userName = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState<User>(userName);
+  const fakeUser = {
+    username: 'icplana',
+    picture: 'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png',
+    role: Roles.superAdmin, 
+    name: 'ignasi',
+    firstSurname: 'casanovas',
+    secondSurname: 'plana',
+    email: 'ignasicp96@gmail.com',
+    password: 'password',
+    following: [],
+    followers: [],
+    autors: [],
+    albums: [],
+    playlists: [],
+  
+  }
+  
+  // const userName = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState<User>(fakeUser);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

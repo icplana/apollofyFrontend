@@ -1,5 +1,5 @@
 import "./profileContent.css";
-import pingu from "../../assets/images/IMG_8452_jpg.webp";
+// import pingu from "../../assets/images/IMG_8452_jpg.webp";
 import { Link } from "react-router-dom";
 import { useAuthDispatch } from "../../context/authcontext";
 import { useUserContext } from "../../context/usercontext";
@@ -12,7 +12,7 @@ export default function Profile() {
   return (
     <main className="profile_container">
       <div className="profile_header">
-        <img src={userContext.user.profilePicture} className="profileUserPic" alt="Profile picture" />
+        <img src={userContext.user.picture} className="profileUserPic" alt="Profile picture" />
         <div className="profileUserName">
           <h3>{userContext.user.username}</h3>
          <Link to="/editprofile" className="link"><small>Edit</small></Link>
@@ -20,7 +20,7 @@ export default function Profile() {
       </div>
       <div className="profile_details">
         <h3>Name</h3>
-        <p>{userContext.user.first_name + ' ' + userContext.user.last_name}</p>
+        <p>{userContext.user.name + ' ' + userContext.user.firstSurname + ' ' + userContext.user.secondSurname}</p>
         <h3>e-mail</h3>
         <p>{userContext.user.email}</p>
       </div>
